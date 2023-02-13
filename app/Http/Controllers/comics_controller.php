@@ -47,7 +47,8 @@ class comics_controller extends Controller
      */
     public function show($id)
     {
-        //
+       // $comics = Comic::find($id);
+        return view('show');
     }
 
     /**

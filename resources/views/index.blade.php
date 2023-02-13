@@ -10,5 +10,6 @@
     </head>
     <body>
         <h2>test</h2>
+        @yield('test')
     </body>
 </html>
