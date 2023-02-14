@@ -7,7 +7,7 @@
             <title>Document</title>
             @vite('resources/js/app.js')
         </head>
-        <body>
+        <body class="bg-dark">
             
             <div class="container">
                 @include('partials.header')
