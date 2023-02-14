@@ -1,5 +1,15 @@
-@extends('index')
+@extends('layouts.app')
 
-@section('test')
-    <h1>ciao</h1>
+@section('content')
+
+<div class="card text-center">
+   <h1 class="card-title mb-3">{{$comic->title}}</h1>
+   <img src="{{$comic->image}}" class="card-img-top w-50 m-auto" alt="...">
+   <div class="card-body">
+     <p class="card-text">{{$comic->description}}</p>
+     <p class="card-text">Prezzo {{$comic->price}}&euro;</p>
+     <a href="#" class="btn btn-primary">Go somewhere</a>
+   </div>
+ </div>
+
 @endsection
