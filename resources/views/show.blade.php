@@ -9,6 +9,11 @@
      <p class="card-text">{{$comic->description}}</p>
      <p class="card-text">Prezzo {{$comic->price}}&euro;</p>
      <a href="{{route('comics.edit', $comic->id)}}" class="btn btn-primary">Edit</a>
+     <form action="{{route('comics.destroy', $comic->id)}}" method="POST" class="d-inline">
+      @csrf
+      @method('DELETE')
+      <button type="submit" class="btn btn-danger">Elimina</button>
+    </form>
    </div>
  </div>
 
