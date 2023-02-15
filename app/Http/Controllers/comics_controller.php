@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use PhpParser\NodeVisitor\FindingVisitor;
 
 class comics_controller extends Controller
 {
@@ -59,12 +60,12 @@ class comics_controller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Comic $comic
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
-        //
+        return view('edit', compact('comic'));
     }
 
     /**
@@ -75,8 +76,11 @@ class comics_controller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+       $data = $request->all();
+       $comic= Comic::findOrFail($id);
+       $comic->update($data);
+       return redirect()->route('comics.show', $comic->id);
     }
 
     /**

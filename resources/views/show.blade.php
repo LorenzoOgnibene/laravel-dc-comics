@@ -8,7 +8,7 @@
    <div class="card-body">
      <p class="card-text">{{$comic->description}}</p>
      <p class="card-text">Prezzo {{$comic->price}}&euro;</p>
-     <a href="#" class="btn btn-primary">Go somewhere</a>
+     <a href="{{route('comics.edit', $comic->id)}}" class="btn btn-primary">Edit</a>
    </div>
  </div>
 
