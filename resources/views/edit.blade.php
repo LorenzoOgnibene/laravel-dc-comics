@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="text-center">
-    <form action="{{route('comics.update', $comic->id)}}" method="POST"> @csrf @method('PUT')
+    <form action="{{route('comics.update', $comic->id)}}" method="POST" class="w-50 m-auto"> @csrf @method('PUT')
         <label for="title" class="form-label text-white">Titolo</label>
         <input type="text" class="form-control" name="title" value="{{$comic->title}}">
         
