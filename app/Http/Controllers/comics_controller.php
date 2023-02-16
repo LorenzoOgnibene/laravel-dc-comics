@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comic;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 use PhpParser\NodeVisitor\FindingVisitor;
 
@@ -37,7 +38,18 @@ class comics_controller extends Controller
      */
     public function store(Request $comic)
     {
+        //'title', 'description', 'image', 'price', 'series', 'sale_date', 'type'
         $data = $comic->all();
+        $comic->validate([
+            'title' => 'required',
+            'description' => 'required|min:10|max:200',
+            'image' => 'url|max:400',
+            'price' => 'required|numeric|min:1|max:7',
+            'series' => 'required|min:10|max:50',
+            'sale_date' => 'required|date|before:today',
+            'type' => 'required|min:10|max:50'
+            
+        ]);
         $newComic = new Comic();
         $newComic->fill($data);
         $newComic->save();
@@ -79,6 +91,16 @@ class comics_controller extends Controller
     {   
        $data = $request->all();
        $comic= Comic::findOrFail($id);
+       $request->validate([
+        'title' => 'required',
+        'description' => 'required|min:10|max:200',
+        'image' => 'url|max:400',
+        'price' => 'required|numeric|min:1|max:7',
+        'series' => 'required|min:10|max:50',
+        'sale_date' => 'required|date|before:today',
+        'type' => 'required|min:10|max:50'
+        
+    ]);
        $comic->update($data);
        return redirect()->route('comics.show', $comic->id);
     }
